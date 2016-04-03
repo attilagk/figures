@@ -1,0 +1,183 @@
+\documentclass[tikz]{standalone}
+\usepackage{fontspec}
+\renewcommand*{\familydefault}{\sfdefault}
+\usepackage{standalone}
+\usepackage{amssymb}
+\usetikzlibrary{arrows.meta, decorations.pathreplacing, shapes.geometric}
+%\usetikzlibrary{positioning,fit,shapes.geometric,fadings,bayesnet}
+
+\begin{document}
+
+\begin{tikzpicture} 
+[font=\footnotesize, label distance=0 cm, inner sep=0.5 pt,
+every node/.style={anchor=center},
+]
+
+% first block of alignment
+\matrix
+[column sep={0.7 cm,between origins}, row sep={12 pt,between origins}, every node/.style={font={\rmfamily\tiny}}]
+(codon-aln) at (0,0) {
+\node (v0) {}; & \node[draw, minimum size=8 pt, inner sep=1 pt] (v0s1) {\(X_1\)}; & \node[draw, minimum size=8 pt, inner sep=1 pt] (v0s2) {\(X_2\)}; & \node[draw, minimum size=8 pt, inner sep=1 pt] {\(X_3\)}; & \node[draw, minimum size=8 pt, inner sep=1 pt] {\(X_4\)}; & \node[draw, minimum size=8 pt, inner sep=1 pt] {\(X_5\)}; \\
+\node[draw, minimum size=8 pt, inner sep=1 pt] (v1) {\(X^1\)}; & \node {\(X_2^1\)}; & \node {\(X_2^1\)}; & \node {\(X_3^1\)}; & \node {\(X_4^1\)}; & \node {\(X_5^1\)};  \\
+\node[draw, minimum size=8 pt, inner sep=1 pt] (v5) {\(X^5\)}; & \node {\(X_2^5\)}; & \node {\(X_2^5\)}; & \node {\(X_3^5\)}; & \node {\(X_4^5\)}; & \node {\(X_5^5\)};  \\
+\node[draw, minimum size=8 pt, inner sep=1 pt] (v2) {\(X^2\)}; & \node {\(X_2^2\)}; & \node {\(X_2^2\)}; & \node {\(X_3^2\)}; & \node {\(X_4^2\)}; & \node {\(X_5^2\)};  \\
+\node[draw, minimum size=8 pt, inner sep=1 pt] (v7) {\(X^7\)}; & \node {\(X_2^7\)}; & \node {\(X_2^7\)}; & \node {\(X_3^7\)}; & \node {\(X_4^7\)}; & \node {\(X_5^7\)};  \\
+\node[draw, minimum size=8 pt, inner sep=1 pt] (v3) {\(X^3\)}; & \node {\(X_2^3\)}; & \node {\(X_2^3\)}; & \node {\(X_3^3\)}; & \node {\(X_4^3\)}; & \node {\(X_5^3\)};  \\
+\node[draw, minimum size=8 pt, inner sep=1 pt] (v6) {\(X^6\)}; & \node {\(X_2^6\)}; & \node {\(X_2^6\)}; & \node {\(X_3^6\)}; & \node {\(X_4^6\)}; & \node {\(X_5^6\)};  \\
+\node[draw, minimum size=8 pt, inner sep=1 pt] (v4) {\(X^4\)}; & \node (s1) {\(X_2^4\)}; & \node (s2) {\(X_2^4\)}; & \node (s3) {\(X_3^4\)}; & \node (s4) {\(X_4^4\)}; & \node (s5) {\(X_5^4\)}; \\ };
+
+% second block of alignment
+\matrix
+[column sep={0.7 cm,between origins}, row sep={12 pt,between origins}, every node/.style={font={\rmfamily\tiny}}]
+%[column sep={0.7 cm,between origins}, row sep={12 pt,between origins}]
+(codon-aln-2) at (4.5 cm,0) {
+\node[draw, minimum size=8 pt, inner sep=1 pt] {\(X_{i_1}\)}; & \node[draw, minimum size=8 pt, inner sep=1 pt] {\(X_{i_2}\)}; & \node[draw, minimum size=8 pt, inner sep=1 pt] {\(X_{i_3}\)}; & \node[draw, minimum size=8 pt, inner sep=1 pt] {\(X_{i_4}\)}; & \node[draw, minimum size=8 pt, inner sep=1 pt] {\(X_{i_5}\)}; \\
+\node (w1) {\(X_{i_1}^1\)}; & \node {\(X_{i_2}^1\)}; & \node {\(X_{i_3}^1\)}; & \node {\(X_{i_4}^1\)}; & \node {\(X_{i_5}^1\)};  \\
+\node (w5) {\(X_{i_1}^5\)}; & \node {\(X_{i_2}^5\)}; & \node {\(X_{i_3}^5\)}; & \node {\(X_{i_4}^5\)}; & \node {\(X_{i_5}^5\)};  \\
+\node (w2) {\(X_{i_1}^2\)}; & \node {\(X_{i_2}^2\)}; & \node {\(X_{i_3}^2\)}; & \node {\(X_{i_4}^2\)}; & \node {\(X_{i_5}^2\)};  \\
+\node (w7) {\(X_{i_1}^7\)}; & \node {\(X_{i_2}^7\)}; & \node {\(X_{i_3}^7\)}; & \node {\(X_{i_4}^7\)}; & \node {\(X_{i_5}^7\)};  \\
+\node (w3) {\(X_{i_1}^3\)}; & \node {\(X_{i_2}^3\)}; & \node {\(X_{i_3}^3\)}; & \node {\(X_{i_4}^3\)}; & \node {\(X_{i_5}^3\)};  \\
+\node (w6) {\(X_{i_1}^6\)}; & \node {\(X_{i_2}^6\)}; & \node {\(X_{i_3}^6\)}; & \node {\(X_{i_4}^6\)}; & \node {\(X_{i_5}^6\)};  \\
+\node (w4) {\(X_{i_1}^4\)}; & \node (s7) {\(X_{i_2}^4\)}; & \node (s8)
+{\(X_{i_3}^4\)}; & \node (s9) {\(X_{i_4}^4\)}; & \node (s10) {\(X_{i_5}^4\)}; \\ };
+
+% dotted lines after first block
+\draw[thick, loosely dotted]
+foreach \x in {1,...,4}
+{
+(codon-aln.east|-w\x) -- (codon-aln-2.west|-w\x)
+(codon-aln-2.east|-w\x) -- +(0.5,0)
+}
+;
+
+% dotted lines after second block
+\draw[thick, loosely dotted]
+foreach \x in {5,...,7}
+{
+(codon-aln.east|-w\x) -- (codon-aln-2.west|-w\x)
+(codon-aln-2.east|-w\x) -- +(0.5,0) coordinate (s11)
+}
+;
+
+\begin{scope}[font={\footnotesize}, every node/.style={draw, inner sep=0 pt, minimum size=9 pt,
+circle, fill=white}]
+
+% site nodes to the bottom of columns
+\path[draw]
+(w4) coordinate (s6)
+foreach \x in {1,...,5}
+{(s\x) +(0,-0.5) node (S\x) {\x}}
+foreach \x/\y in {6/1,7/2,8/3,9/4,10/5}
+{(s\x) +(0,-0.5) node (S\x) {\(i_\y\)}}
+(S10-|s11) coordinate (S11)
+;
+
+% SCHEMATI STRUCTURE
+\begin{scope}[yshift=-3.5 cm]
+
+% position sites in schematic structure
+%\draw[line width=4 pt, gray!30!white]
+\path
+(0,0) coordinate (a1)
+-- ++(30:0.7) coordinate (a2)
+-- ++(-70:0.7) coordinate (a3)
+-- ++(55:0.7) coordinate (a4)
+-- ++(125:0.7) coordinate (a5)
+(a3) ++(-5:0.7) coordinate (a6)
+-- ++(50:0.7) coordinate (a7)
+-- ++(125:0.7) coordinate (a8)
+-- ++(-05:0.7) coordinate (a9)
+-- ++(-70:0.7) coordinate (a10)
+;
+
+% site labels
+\path[draw] foreach \x in {1,...,5}
+{(a\x) node (A\x) {\x}}
+;
+\path[draw] foreach \x/\y in {6/1,7/2,8/3,9/4,10/5}
+{(a\x) node (A\x) {\(i_\y\)}}
+;
+
+% site dependencies
+\draw[]
+(A2) -- (A3)
+(A2) -- (A4)
+(A3) -- (A4)
+(A4) -- (A6)
+(A4) -- (A7)
+(A6) -- (A7)
+(A7) -- (A9)
+(A7) -- (A10)
+(A9) -- (A10)
+;
+
+\path
+(A2) ++(110:0.3 cm) coordinate (B2a) ++(110:0.15 cm) coordinate (C2a)
+(A2) ++(170:0.3 cm) coordinate (B2b) ++(170:0.15 cm) coordinate (C2b)
+(A3) ++(220:0.3 cm) coordinate (B3a) ++(220:0.15 cm) coordinate (C3a)
+(A3) ++(170:0.3 cm) coordinate (B3b) ++(170:0.15 cm) coordinate (C3b)
+(A3) ++(-60:0.3 cm) coordinate (B3c) ++(-60:0.15 cm) coordinate (C3c)
+%(A9) ++(220:0.3 cm) coordinate (B9a) ++(220:0.15 cm) coordinate (C9a)
+(A10) ++(250:0.3 cm) coordinate (B10a) ++(250:0.15 cm) coordinate (C10a)
+(A10) ++(200:0.3 cm) coordinate (B10b) ++(200:0.15 cm) coordinate (C10b)
+;
+
+\draw[]
+(A2) -- (B2a)
+(A2) -- (B2b)
+(A3) -- (B3a)
+(A3) -- (B3b)
+(A3) -- (B3c)
+(A10) -- (B10a)
+(A10) -- (B10b)
+;
+
+\draw[densely dotted]
+(B2a) -- (C2a)
+(B2b) -- (C2b)
+(B3a) -- (C3a)
+(B3b) -- (C3b)
+(B3c) -- (C3c)
+(B10a) -- (C10a)
+(B10b) -- (C10b)
+;
+
+\end{scope}
+\end{scope}
+
+\begin{scope}[blue, font=\normalsize]
+
+% label for site dependency graph
+\draw[decorate, decoration={brace, raise=10 pt}]
+(A10|-A5.north) --
+node[right=15 pt, align=left]
+{\(\mathcal{G}\): Markov network\\\(X_i
+\perp X_{\mathrm{nonne}(i)} \; | \; X_{\mathrm{ne}(i)} \)}
+(A10|-C3c)
+;
+
+% label for sites
+\draw[decorate, decoration={brace, raise=10 pt}]
+(S10.north) --
+node[right=15 pt, align=left] {\(\mathcal{V}_\mathcal{G}\)}
+(S10.south)
+;
+
+% label for sequence family
+\draw[decorate, decoration={brace, raise=5 pt}]
+(v1.west|-v0s1.north) -- coordinate (m0) (s11|-v0s1.north)
+(m0) +(0,10 pt) node[anchor=south west] {\(X\in\mathcal{F}\)}
+;
+
+% labels for site patterns and sequences
+\path
+(v0s1) +(160:1.5 cm) node (omega-i) {\( X_i \)}
+;
+
+\draw[thin, -Stealth] (omega-i) to[bend right] (v0s1) ;
+\draw[thin, -Stealth] (omega-i) to[bend left] (v0s2) ;
+
+\end{scope}
+
+\end{tikzpicture}
+\end{document}

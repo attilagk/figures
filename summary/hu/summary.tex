@@ -1,0 +1,39 @@
+\documentclass[tikz]{standalone}
+\usepackage{polyglossia}
+\setdefaultlanguage{magyar}
+\usepackage{fontspec}
+\renewcommand*{\familydefault}{\sfdefault}
+\usepackage{standalone}
+\usepackage{amssymb}
+\usetikzlibrary{decorations}
+\usetikzlibrary{arrows.meta, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\usetikzlibrary{mindmap}
+
+\begin{document}
+
+\begin{tikzpicture}[small mindmap, concept color=brown!30!white, text=black]
+
+\node[concept, level 1 concept] (new-mod) {\emph{duális} függőségi modellek}
+[clockwise from=45]
+child[level 2 concept, grow=-90] {node[concept] {általános}
+}
+child[level 2 concept, grow=+90] {node[concept] {mechanisztikus}
+    child[grow=180] {node[concept] {energetika}}
+}
+child[grow=0, concept color=orange!30!white] {node[concept] {elemző eszközök}
+    child[level 2 concept, grow=+90] {node[concept] {a priori tudás}}
+    child[level 2 concept, grow=-90] {node[concept] {skálázható}}
+child[level 1 concept, grow=0, concept color=red!30!white] {node[concept]
+{alkalmazások}
+    child[level 2 concept, grow=+90] {node[concept] {natív konformáció}}
+    child[level 2 concept, grow=+0] {node[concept] {funkcionális dinamika}}
+    child[level 2 concept, grow=-90] {node[concept] {adaptív evolúció}}
+}
+}
+;
+\node[extra concept, concept color=black!30!white, left=0.5 cm] at
+(new-mod.west) {\emph{csak helyi} függőségi modellek};
+
+\end{tikzpicture}
+
+\end{document}

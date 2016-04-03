@@ -1,0 +1,129 @@
+\documentclass[tikz]{standalone}
+\usepackage{fontspec}
+\renewcommand*{\familydefault}{\sfdefault}
+\usepackage{standalone}
+\usepackage{amssymb}
+\usetikzlibrary{arrows.meta, decorations.pathreplacing, shapes.geometric}
+%\usetikzlibrary{positioning,fit,shapes.geometric,fadings,bayesnet}
+
+\begin{document}
+
+\begin{tikzpicture}
+[font=\footnotesize, label distance=0 cm, inner sep=0.5 pt,
+%every node/.style={anchor=center},
+every node/.style={draw, inner sep=0 pt, minimum size=9 pt, circle, fill=none}
+]
+
+\path
+coordinate (v1) at (0,0)
+coordinate (v5) at (0,-0.25)
+coordinate (v2) at (0,-0.50)
+coordinate (v7) at (0,-0.75)
+coordinate (v3) at (0,-1.00)
+coordinate (v6) at (0,-1.25)
+coordinate (v4) at (0,-1.50)
+;
+
+\path[draw]
+foreach \x in {1,...,4}
+{(v\x-|top.west) +(-0.5,0) node (V\x) {\x}}
+(v5-|top.west) +(-1.5,0) node (V5) {5}
+(v6-|top.west) +(-2.4,0) node (V6) {6}
+(v7-|top.west) +(-3.0,0) node (V7) {7}
+;
+
+% draw phylogeny
+\begin{scope}[-Latex]
+\draw (V7) -- (V5) ;
+\draw (V5) -- (V1) ;
+\draw (V5) -- (V2) ;
+\draw (V7) -- (V6) ;
+\draw (V6) -- (V3) ;
+\draw (V6) -- (V4) ;
+\end{scope}
+
+\begin{scope}[yshift=-3.5 cm]
+
+% position sites in schematic structure
+%\draw[line width=4 pt, gray!30!white]
+\path
+(0,0) coordinate (a1)
+-- ++(30:0.7) coordinate (a2)
+-- ++(-70:0.7) coordinate (a3)
+-- ++(55:0.7) coordinate (a4)
+-- ++(125:0.7) coordinate (a5)
+(a3) ++(-5:0.7) coordinate (a6)
+-- ++(50:0.7) coordinate (a7)
+-- ++(125:0.7) coordinate (a8)
+-- ++(-05:0.7) coordinate (a9)
+-- ++(-70:0.7) coordinate (a10)
+;
+
+% site labels
+\path[draw] foreach \x in {1,...,5}
+{(a\x) node (A\x) {\x}}
+;
+\path[draw] foreach \x/\y in {6/1,7/2,8/3,9/4,10/5}
+{(a\x) node (A\x) {\(i_\y\)}}
+;
+
+% site dependencies
+\draw[]
+(A2) -- (A3)
+(A2) -- (A4)
+(A3) -- (A4)
+(A4) -- (A6)
+(A4) -- (A7)
+(A6) -- (A7)
+(A7) -- (A9)
+(A7) -- (A10)
+(A9) -- (A10)
+;
+
+\path
+(A2) ++(110:0.3 cm) coordinate (B2a) ++(110:0.15 cm) coordinate (C2a)
+(A2) ++(170:0.3 cm) coordinate (B2b) ++(170:0.15 cm) coordinate (C2b)
+(A3) ++(220:0.3 cm) coordinate (B3a) ++(220:0.15 cm) coordinate (C3a)
+(A3) ++(170:0.3 cm) coordinate (B3b) ++(170:0.15 cm) coordinate (C3b)
+(A3) ++(-60:0.3 cm) coordinate (B3c) ++(-60:0.15 cm) coordinate (C3c)
+%(A9) ++(220:0.3 cm) coordinate (B9a) ++(220:0.15 cm) coordinate (C9a)
+(A10) ++(250:0.3 cm) coordinate (B10a) ++(250:0.15 cm) coordinate (C10a)
+(A10) ++(200:0.3 cm) coordinate (B10b) ++(200:0.15 cm) coordinate (C10b)
+;
+
+\draw[]
+(A2) -- (B2a)
+(A2) -- (B2b)
+(A3) -- (B3a)
+(A3) -- (B3b)
+(A3) -- (B3c)
+(A10) -- (B10a)
+(A10) -- (B10b)
+;
+
+\draw[densely dotted]
+(B2a) -- (C2a)
+(B2b) -- (C2b)
+(B3a) -- (C3a)
+(B3b) -- (C3b)
+(B3c) -- (C3c)
+(B10a) -- (C10a)
+(B10b) -- (C10b)
+;
+
+\end{scope}
+
+\end{tikzpicture}
+
+\end{document}
+
+\path
+coordinate (v1) at (0,0)
+coordinate (v5) at (0,-0.5)
+coordinate (v2) at (0,-1.0)
+coordinate (v7) at (0,-1.5)
+coordinate (v3) at (0,-2.0)
+coordinate (v6) at (0,-2.5)
+coordinate (v4) at (0,-3.0)
+;
+

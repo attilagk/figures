@@ -1,0 +1,173 @@
+\documentclass[tikz]{standalone}
+\usepackage{fontspec}
+\renewcommand*{\familydefault}{\sfdefault}
+\usepackage{standalone, amssymb}
+\usetikzlibrary{arrows.meta, decorations.pathreplacing, shapes.geometric}
+%\usetikzlibrary{positioning,fit,shapes.geometric,fadings,bayesnet}
+
+\begin{document}
+
+\begin{tikzpicture}[
+%label position=0,
+radius=2 pt,
+treenode/.style={
+ellipse,
+draw,
+minimum size=0.4 cm,
+inner sep=0 pt,
+}
+]
+
+% tree nodes
+\node [treenode] at (0,0) (pa)
+{\(\mathrm{pa}(v)\)};
+\node [treenode] at (0:7 cm) (v)  {\(v\)};
+
+\draw [thick, -Latex] (pa) -- (v);
+
+% truncated edges
+\draw[thick, solid]
+(v) -- +(0:0.7 cm) coordinate(v1)
+(v) -- +(-30:0.7 cm) coordinate(v2)
+(pa) -- +(-30:0.7 cm) coordinate(w2)
+;
+\draw [thick, solid, -Latex] (180:1.0 cm) coordinate(pa2) -- (pa);
+\draw[thick,densely dotted]
+(v1) -- +(0:0.3 cm)
+(v2) -- +(-30:0.3 cm)
+(w2) -- +(-30:0.3 cm)
+(pa2) -- ++(180:0.3 cm)
+;
+
+\path[align=right, anchor=east]
+(pa) +(90:1) node {substitutions}
+;
+
+\path
+% substitutions
+(1,1) coordinate(t1)
+(2,1) coordinate(t5)
+(2.2,1) coordinate(t6)
+(5,1) coordinate(t8)
+(5.5,1) coordinate(t13)
+(6.3,1) coordinate(t14)
+;
+
+% plot
+\draw plot[ycomb, mark=*, mark options={draw=black, fill=green!70!black}] coordinates{
+% substitutions
+(t1) (t5) (t6) (t8) (t13) (t14)
+};
+
+
+% labels for substitutions
+\path[every node/.style={anchor=south}]
+(t1) node {\(s_1\)}
+(t5) node {\(s_2\)}
+(t6) node[anchor=south west] {\(s_3\)}
+(t8) node {\(s_4\)}
+(t13) node {\(s_3\)}
+(t14) node {\(s_5\)}
+;
+
+\path
+(pa) +(90: 0.5 cm) node[anchor=center] {\(\omega^{\mathrm{pa}(v)}=s_0\)}
+(v) +(90: 0.5 cm) node[anchor=center] {\(\omega^v=s_5\)}
+;
+
+
+% ``meanderings in sequence space''
+\begin{scope}[
+xshift=0 cm, yshift=-2 cm,
+]
+
+\node[align=right, anchor=east] at (0,0) (S) {jumps in \\ seq.~space
+\(\mathbb{S}\)};
+
+\path[draw, every node/.style={draw, minimum size=4 pt, inner sep=1 pt}]
+(S) ++(0:6 cm) node (s1) {\(s_1\)}
++(-30:1 cm) node (s2) {}
++(40:1 cm) node (s3) {}
++(160:1 cm) node (s4) {}
+++(-160:1 cm) node (s5) {\(s_2\)}
+++(-175:1 cm) node (s6) {\(s_3\)}
++(-155:1 cm) node (s7) {}
+++(145:1 cm) node (s8) {\(s_4\)}
++(10:1 cm) node (s9) {}
++(-135:1 cm) node (s10) {}
++(45:1 cm) node (s11) {}
++(165:1 cm) node (s12) {}
+(s6) % back mutation at t13
+++(-30:1 cm) node (s14) {\(s_{5}\)}
++(25:1 cm) node (s15) {}
+(s1) +(125:1 cm) node (s0) {\(s_0\)}
+;
+\end{scope}
+
+\tikzset{
+e1/.pic={
+\draw[solid] (1 pt,0) -- ++(70:0.10) coordinate (a);
+\draw[densely dotted] (a) -- +(70:0.10);
+\draw[solid] (-1 pt,0) -- ++(110:0.10) coordinate (b);
+\draw[densely dotted] (b) -- +(110:0.10);
+}
+}
+
+\tikzset{
+e2/.pic={
+\draw[solid] (1 pt,0) -- ++(-70:0.10) coordinate (a);
+\draw[densely dotted] (a) -- +(-70:0.10);
+\draw[solid] (-1 pt,0) -- ++(-100:0.10) coordinate (b);
+\draw[densely dotted] (b) -- +(-100:0.10);
+\draw[solid] (-2.0 pt,0) -- ++(-130:0.10) coordinate (c);
+\draw[densely dotted] (c) -- +(-130:0.10);
+}
+}
+
+\draw foreach \x in {0,1,2,3,4,5,6,7,8,9,10,11,12,14,15}
+{(s\x.north) pic {e1}
+(s\x.south) pic {e2} }
+;
+
+\draw
+(s0) -- (s1)
+(s1) -- (s2)
+(s1) -- (s3)
+(s1) -- (s4)
+(s6) -- (s7)
+(s8) -- (s9)
+(s8) -- (s10)
+(s8) -- (s11)
+(s8) -- (s12)
+(s14) -- (s15)
+;
+
+\draw
+(s1) -- (s5)
+(s5) -- (s6)
+(s6) -- (s8)
+(s6) -- (s14)
+;
+
+\draw
+(s15) -- (s2)
+(s11) -- (s4)
+(s11) -- (s12)
+;
+
+% jumps: substitutions
+\draw[green!70!black, every edge/.style={draw, bend right, -Stealth}]
+(s0) edge (s1)
+(s1) edge (s5)
+(s5) edge (s6)
+(s6) edge (s8)
+(s8) edge (s6)
+(s6) edge (s14)
+;
+
+
+
+\end{tikzpicture}
+\end{document}
+
+
