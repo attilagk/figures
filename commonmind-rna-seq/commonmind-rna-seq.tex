@@ -122,7 +122,7 @@
 % SNP variants
 var/.style={minimum width=1.5pt, minimum height=1.5pt, inner sep=0, thin, rectangle},
 alt/.style={var, draw, fill=white},
-ref/.style={var, draw, fill},
+ref/.style={var, draw, fill, circle},
 % RNA or DNA molecules
 DNA/.style={},
 matDNA/.style={DNA, red},
@@ -134,7 +134,7 @@ patread/.style={read, blue},
 % genes (ORFs)
 orf/.style={fill=lightgray, very thin},
 % annotations
-annot/.style={font=\footnotesize},
+annot/.style={font=\small},
 sideannot/.style={annot, anchor=east},
 sideannotL/.style={sideannot, font=\large},
 topannot/.style={annot, anchor=center},
@@ -192,7 +192,7 @@ human/.style={anchor=south}
 ++(0,1.7) node[sideannot] (SNPs) {SNPs}
 ++(0,15pt) node[sideannot] (genes) {genes}
 ++(0,10pt) node[sideannot] (indiv) {}
-++(0,3) node[sideannotL] (cohort) {cohort}
++(0,15pt) node[sideannot] {individuals}
 % read count ratio
 (0.5,-0.3) node[sideannot] (S) {read count ratio, \(S\)}
 ;
@@ -214,6 +214,7 @@ human/.style={anchor=south}
 % annotations
 \path[decorate, decoration=brace, draw]
 (g1start|-indiv) -- coordinate (i1) pic[anchor=south] {man-old} (g1end|-indiv)
+(i1) +(-15pt,15pt) node[annot] {\(i_1\)}
 ;
 \path
 (g1g1start|-genes) -- node[topannot] {\(g_1\)} (g1g1end|-genes)
@@ -236,21 +237,21 @@ human/.style={anchor=south}
 +(-1.4,0) pic {woman-a}
 ;
 \path[decorate, decoration=brace, draw]
-(g1end|-i1) ++(-0.6,0.3) coordinate (inA) +(0,2.5) -- node[annot, anchor=west] (instA) {A} (inA) ;
+(g1end|-i1) ++(-0.6,0.3) coordinate (inA) +(0,2.5) -- node[annot, anchor=west] (instA) {\(A\)} (inA) ;
 % read count ratios
 \path
-(g1g1start|-S) -- node[annot] {\(\frac{13 + 9}{14 + 11} = 0.88\)} (g1g1end|-S) 
-(g1g2start|-S) -- node[annot] {\(\frac{6}{11} \approx 0.55\)} (g1g2end|-S) 
+(g1g1start|-S) -- node[annot] {\(\frac{13 + 9}{(13 + 1) + (9 + 2)} = 0.88\)} (g1g1end|-S) 
+(g1g2start|-S) -- node[annot] {\(\frac{6}{(6 + 5)} \approx 0.55\)} (g1g2end|-S) 
 ;
 
 
 % DRAW GENOME 2
 % molecules/seqmences
-\DNAgenometwo{matDNA}{(matDNA)}{ref}{ref}{ref}{ref}
-\DNAgenometwo{patDNA}{(patDNA)}{ref}{ref}{alt}{alt}
+\DNAgenometwo{matDNA}{(matDNA)}{ref}{ref}{ref}{alt}
+\DNAgenometwo{patDNA}{(patDNA)}{ref}{ref}{alt}{ref}
 \DNAgenometwo{DNA}{(RNAseq)}{ref}{ref}{ref}{ref}
 \matRNAgenometwo{(matRNA)}{ref}{ref}{ref}{alt}{8}{4}
-\patRNAgenometwo{(patRNA)}{alt}{ref}{ref}{ref}{4}{3}
+\patRNAgenometwo{(patRNA)}{alt}{ref}{alt}{ref}{4}{3}
 \mappedreads{(g2g1s1|-RNAseq)}{7}{+}{-}{matread}{ref}
 \mappedreads{(g2g1s1|-RNAseq)}{3}{-}{-}{patread}{alt}
 \mappedreads{(g2g1s3|-RNAseq)}{3}{+}{+}{patread}{alt}
@@ -260,6 +261,7 @@ human/.style={anchor=south}
 % annotations
 \path[decorate, decoration=brace, draw]
 (g2start|-indiv) -- coordinate (i2) pic[anchor=south] {gray-woman-a} (g2end|-indiv)
+(i2) +(-15pt,15pt) node[annot] {\(i_2\)}
 ;
 \path
 (g2g1start|-genes) -- node[topannot] {\(g_1\)} (g2g1end|-genes)
@@ -281,12 +283,12 @@ human/.style={anchor=south}
 +(1.5,0) pic {man}
 ;
 \path[decorate, decoration=brace, draw]
-(g2start|-i2) ++(0.9,0.3) -- node[annot, anchor=east] (instB) {B} +(0,2.5) ;
+(g2start|-i2) ++(0.9,0.3) -- node[annot, anchor=east] (instB) {\(B\)} +(0,2.5) ;
 s
 % read count ratios
 \path
-(g2g1start|-S) -- node[annot] {\(\frac{7 + 3}{10 + 5} \approx 0.67\)} (g2g1end|-S) 
-(g2g2start|-S) -- node[annot] {\(\frac{4}{6} \approx 0.67\)} (g2g2end|-S) 
+(g2g1start|-S) -- node[annot] {\(\frac{7 + 3}{(7 + 3) + (3 + 2)} \approx 0.67\)} (g2g1end|-S) 
+(g2g2start|-S) -- node[annot] {\(\frac{4}{(4 + 2)} \approx 0.67\)} (g2g2end|-S) 
 ;
 
 
