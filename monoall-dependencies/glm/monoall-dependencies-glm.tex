@@ -1,0 +1,20 @@
+\documentclass[tikz]{standalone}
+
+\usetikzlibrary{bayesnet}
+
+\begin{document}
+\begin{tikzpicture}
+
+\input{../monoall-dependencies.tex}
+
+\node[/biol, /myrnd] (zg) at (z) {\(Z_g\)};
+\pgfkeys{/xtech/.style={/tech, /myrnd}}
+\pgfkeys{/xbiol/.style={/biol, /myrnd}}
+\pgfkeys{/beta/.style={/param, /myrnd}}
+
+\input{../monoall-dependencies-2.tex}
+
+\plate {v-plate} {(y) (zg)} {\(g\in\mathcal{G}\)};
+
+\end{tikzpicture}
+\end{document}

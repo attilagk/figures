@@ -1,0 +1,33 @@
+
+\documentclass[tikz]{standalone}
+\begin{document}
+\begin{tikzpicture}
+
+\input{../monoall-dependencies.tex}
+
+% set styles
+\pgfkeys{/x/.style={/myobs, /myrnd}}
+\pgfkeys{/xx/.style={/myobs, /myrnd}}
+\pgfkeys{/beta/.style={/mylat, /myrnd}}
+\newcommand{\X}[0]{X}
+\newcommand{\XX}[0]{X}
+
+\input{../monoall-dependencies-2.tex}
+
+% beta and plate
+\node[/beta] (betag) at (beta) {\(\beta\)};
+\plate {v-plate} {(y)} {\(g\)};
+\draw (betag) -- (y); % dependence of X_j on each psi_j
+
+% order 1: X_j
+\foreach \j in {1,...,5} {
+\draw (X\j) to[out=-45 - 15 * \j, in=180 - 30 * \j] (y); % dependence of Y on each X_j
+}
+% order 2+: interactions among X_j
+%\foreach \j in {1,...,4} {
+%\node[/xx] (XX\j) at (xx\j) {\(\XX_{I_\j}\)}; % place psi_j
+%\draw (XX\j) -- (XX\j|-X\j) to[out=-90, in=165 - 30 * \j] (y); % dependence of Y on each X_j
+%}
+
+\end{tikzpicture}
+\end{document}
