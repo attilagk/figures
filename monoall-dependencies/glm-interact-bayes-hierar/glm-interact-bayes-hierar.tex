@@ -4,6 +4,8 @@
 
 \input{../monoall-dependencies.tex}
 
+% response
+\node[/mylat, /myrnd] (y) at (0,0) {\(Z_g\)};
 % set styles
 \pgfkeys{/x/.style={/myobs, /myrnd}}
 \pgfkeys{/xx/.style={/myobs, /myrnd}}
@@ -15,19 +17,31 @@
 
 % beta and plate
 \node[/beta] (betag) at (beta) {\(\beta\)};
-\node[/mylat] (y) at (0,0) {\(Z_g\)};
 \draw (betag) -- (y); % dependence of X_j on each psi_j
-\path (y) +(1\xdist,-0.5\ydist) node[/myobs, /myrnd] (yy) {\(Y_g\)};
-\plate {v-plate} {(y) (yy)} {\(g\)};
+\path (y) +(1\xdist,-0.5\ydist) node[/myobs, /myrnd] (yy) {\(Y_s\)}
++(1.5\xdist,-1.0\ydist) coordinate (bottomright);
+\draw (y) -- (yy);
+\plate {v-plate} {(yy)} {\(s\)};
+\plate {v-plate} {(y) (yy) (bottomright)} {\(g\)};
 
-% order 1: X_j
-\foreach \j in {1,...,5} {
-\draw (X\j) to[out=-45 - 15 * \j, in=180 - 30 * \j] (y); % dependence of Y on each X_j
-}
+% to Z_g
 % order 2+: interactions among X_j
 \foreach \j in {1,...,4} {
 \node[/xx] (XX\j) at (xx\j) {\(\XX_{I_\j}\)}; % place psi_j
+}
+% order 1: X_j
+\foreach \j in {1,...,3} {
+\draw (X\j) to[out=-45 - 15 * \j, in=180 - 30 * \j] (y); % dependence of Y on each X_j
 \draw (XX\j) -- (XX\j|-X\j) to[out=-90, in=165 - 30 * \j] (y); % dependence of Y on each X_j
+}
+% to Y_s
+% order 2+: interactions among X_j
+\foreach \j in {3,...,4} {
+\draw (XX\j) to[out=-90, in=195 - 30 * \j] (yy); % dependence of Y on each X_j
+}
+% order 1: X_j
+\foreach \j in {4,...,5} {
+\draw (X\j) to[out=-30 - 15 * \j, in=210 - 30 * \j] (yy); % dependence of Y on each X_j
 }
 
 \end{tikzpicture}
