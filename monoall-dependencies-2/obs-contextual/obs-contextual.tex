@@ -1,0 +1,27 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{bayesnet, arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}
+
+
+% GLOBAL SETTINGS
+\newcommand{\p}{3}
+\newcommand{\Xstyle}{obs}
+\newcommand{\Bstyle}{}
+\newcommand{\mybeta}{
+\begin{tabular}{c}
+\(\beta_1 | X_2 = a\) \\
+\(\beta_1 | X_2 = b\)
+\end{tabular}}
+
+\input{../shared-code}
+
+% EDGES & PLATE
+\draw (X2) -- (X3) ;
+\draw (X3) -- (Y) ;
+\draw[dashed] (X1) -- (Y) ;
+\plate {v-plate} {(Y) (B1) (B\p)} {\(g\)};
+
+\end{tikzpicture}
+\end{document}

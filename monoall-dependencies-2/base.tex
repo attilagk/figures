@@ -1,0 +1,52 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{bayesnet, arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}
+
+
+% GLOBAL SETTINGS
+\newcommand{\p}{3}
+\newcommand{\Xstyle}{det}
+\newcommand{\Bstyle}{latent}
+\newcommand{\mybeta}{
+\begin{tabular}{c}
+\(\beta_1 | X_2 = a\) \\
+\(\beta_1 | X_2 = b\)
+\end{tabular}
+}
+
+\input{shared-code}
+
+% EDGES & PLATE
+\foreach \j in {1,3} { \draw (X\j) -- (Y) ;}
+\plate {v-plate} {(Y) (bL) (bR)} {\(g\)};
+
+% DATA
+%
+\path (X1) +(-\xdist,0.25\ydist) node[anchor=south] {
+\begin{tabular}{c}
+\(y_i\) \\ \hline
+\(y_1\) \\ \(y_2\) \\ \(y_3\) \\ \(y_4\) \\ \(y_5\) \\ \(y_6\) \\ \(y_7\) \\ \(y_8\) \\
+\end{tabular} } ;
+%
+\path (X1) +(0,0.25\ydist) node[anchor=south] {
+\begin{tabular}{c}
+\(x_{i1}\) \\ \hline
+0 \\ 0 \\ 0 \\ 0 \\ 1 \\ 1 \\ 1 \\ 1 \\
+\end{tabular} } ;
+%
+\path (X2) +(0,0.25\ydist) node[anchor=south] {
+\begin{tabular}{c}
+\(x_{i2}\) \\ \hline
+0 \\ 0 \\ 1 \\ 1 \\ 0 \\ 0 \\ 1 \\ 1 \\
+\end{tabular} } ;
+%
+\path (X3) +(0,0.25\ydist) node[anchor=south] {
+\begin{tabular}{c}
+\(x_{i3}\) \\ \hline
+0 \\ 1 \\ 0 \\ 1 \\ 0 \\ 1 \\ 0 \\ 1 \\
+\end{tabular} } ;
+
+\end{tikzpicture}
+\end{document}
