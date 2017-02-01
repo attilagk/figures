@@ -177,16 +177,18 @@ human/.style={anchor=south}
 
 \path[]
 % RNA-seq
-(0.5,1) node[sideannot] (RNAseq) {reference}
-+(-0.5,1) node[sideannotL] {RNA-seq}
+(0.5,1) node[sideannot] (RNAseq) {ref.~genome}
++(0,1) node[sideannot, align=center] {reads: higher count}
++(0,-0.5) node[sideannot, align=center] {reads: lower count}
 % expression
 ++(0,3) node (expr) {}
-+(-0.5,1) node[sideannotL] {expression}
-++(0,5pt) node[sideannot, color=red] (matDNA) {maternal}
++(0,1) node[sideannot, color=red] {maternal RNA}
+++(0,5pt) node[sideannot, color=red] (matDNA) {maternal DNA}
 +(0,5pt) node (matRNA) {}
 (expr)
-++(0,-5pt) node[sideannot, color=blue] (patDNA) {paternal}
+++(0,-5pt) node[sideannot, color=blue] (patDNA) {paternal DNA}
 +(0,-5pt) node (patRNA) {}
++(0,-15pt) node[sideannot, color=blue] {paternal RNA}
 % annotation of genes and SNPs above expression
 (expr)
 ++(0,1.7) node[sideannot] (SNPs) {SNPs}
@@ -227,17 +229,9 @@ human/.style={anchor=south}
 (g1g2s1|-SNPs) node[topannot] {\(s_4\)}
 ;
 % cohort of individuals
-\path (i1) ++(0,1)
-%+(-2.1,0.7) pic {woman-old}
-%+(0.3,0.8) pic {gray-man-old}
-%+(1.0,0) pic {gray-man}
-%+(2.0,0.5) pic {man-old}
-%+(-2.6,0.0) pic {gray-man-old}
-%+(-0.7,0.5) pic {gray-woman-old}
-%+(-1.4,0) pic {woman-a}
-;
-\path[decorate, decoration=brace, draw]
-(g1end|-i1) ++(-0.6,0.3) coordinate (inA) +(0,2.5) -- node[annot, anchor=west] (instA) {\(A\)} (inA) ;
+%\path (i1) ++(0,1) ;
+%\path[decorate, decoration=brace, draw]
+%(g1end|-i1) ++(-0.6,0.3) coordinate (inA) +(0,2.5) -- node[annot, anchor=west] (instA) {\(A\)} (inA) ;
 % read count ratios
 \path
 (g1g1start|-S) -- node[annot] {\(\frac{13 + 9}{(13 + 1) + (9 + 2)} = 0.88\)} (g1g1end|-S) 
@@ -274,17 +268,10 @@ human/.style={anchor=south}
 (g2g2s1|-SNPs) node[topannot] {\(s_4\)}
 ;
 % cohort of individuals
-\path (i2) ++(0,1)
-%+(2.2,0.5) pic {woman-a}
-%+(0.5,0.4) pic {gray-man}
-%+(-1.5,0.5) pic {woman-b}
-%+(-0.7,0.3) pic {gray-woman-old}
-%+(2.8,0) pic {woman-b}
-%+(1.5,0) pic {man}
-;
-\path[decorate, decoration=brace, draw]
-(g2start|-i2) ++(0.9,0.3) -- node[annot, anchor=east] (instB) {\(B\)} +(0,2.5) ;
-s
+%\path (i2) ++(0,1) ;
+%\path[decorate, decoration=brace, draw]
+%(g2start|-i2) ++(0.9,0.3) -- node[annot, anchor=east] (instB) {\(B\)} +(0,2.5) ;
+
 % read count ratios
 \path
 (g2g1start|-S) -- node[annot] {\(\frac{7 + 3}{(7 + 3) + (3 + 2)} \approx 0.67\)} (g2g1end|-S) 
@@ -293,7 +280,7 @@ s
 
 
 % annotate institutions
-\path (instA) -- node [annot]{institutions} (instB) ;
+%\path (instA) -- node [annot]{institutions} (instB) ;
 
 \end{tikzpicture}
 \end{document}
