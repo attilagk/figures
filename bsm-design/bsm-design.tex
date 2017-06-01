@@ -1,0 +1,42 @@
+\documentclass{standalone}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\begin{document}
+\usetikzlibrary{arrows.meta}
+\begin{tikzpicture}[-{Latex},fill=black]
+\tikzstyle{box}=[fill=BlueViolet,text=white]
+\tikzstyle{step}=[text=green]
+\node[box] (S0) at (0,1) {sample pair \(1\)};
+\node[box] (F0) at (0,0) {FASTQ};
+\node[box] (B0) at (0,-1) {BAM};
+\node[box] (V0) at (0,-2) {VCF};
+\node[box] (D0) at (0,-3.5) {variants};
+\node[box] (G0) at (0,-5.0) {genes, pathways};
+\node[box] (S) at (4,1) {sample pair \(n\)};
+\node[box] (F) at (4,0) {FASTQ};
+\node[box] (B) at (4,-1) {BAM};
+\node[box] (V) at (4,-2) {VCF};
+\node[box] (D) at (4,-3.5) {variants};
+\node[box] (G) at (4,-5.0) {genes, pathways};
+\node[box] (C) at (2,-6.5) {relevance to \\ phenotype (SCZ)};
+\begin{scope}[anchor=east,align=right,draw]
+\draw (S) -- (F);
+\draw (F) -- (B);
+\draw (B) -- (V);
+\draw (V) -- (D);
+\draw (D) -- (G);
+\draw (S0) -- node[font=\itshape] {sequencing} (F0);
+\draw (F0) -- node[font=\itshape] {mapping to ref.~genome} (B0);
+\draw (B0) -- node[font=\itshape] {variant calling} (V0);
+\draw (V0) -- node[font=\itshape] {annotation, filtering \\ validation} (D0);
+\draw (D0) -- node[font=\itshape] {aggregation} (G0);
+\end{scope}
+\path (S0) -- node{...} (S);
+\path (F0) -- node{...} (F);
+\path (B0) -- node{...} (B);
+\path (V0) -- node{...} (V);
+\path (D0) -- node{...} (D);
+\draw (G0) -- (C);
+\draw (G) -- (C);
+\end{tikzpicture}
+\end{document}
