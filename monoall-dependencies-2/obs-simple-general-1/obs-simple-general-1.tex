@@ -1,0 +1,24 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{bayesnet, arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}
+
+
+% GLOBAL SETTINGS
+\newcommand{\p}{3}
+\newcommand{\Xstyle}{obs}
+\newcommand{\Bstyle}{}
+\newcommand{\mybeta}{\(\beta_1\)}
+
+\input{../shared-code-1}
+
+% EDGES & PLATE
+\foreach \j in {1,...,3} { \draw (X\j) -- (Y) ;}
+\draw (X2) -- (X3) ;
+\draw (X2) -- (X1) ;
+\draw (X1) to[out=30, in=150] (X3) ;
+\plate {v-plate} {(Y) (B\p)} {\(g\)};
+
+\end{tikzpicture}
+\end{document}

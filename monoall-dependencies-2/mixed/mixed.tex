@@ -1,0 +1,41 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{bayesnet, arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}
+
+
+% GLOBAL SETTINGS
+\newcommand{\p}{3}
+\newcommand{\Xstyle}{obs}
+\newcommand{\Bstyle}{latent}
+\newcommand{\Betastyle}{}
+\newcommand{\mybeta}{\(\beta_1\)}
+
+\input{../shared-code-1}
+
+\path (-2\xdist,\ydist) foreach \j in {1,...,\p} {
+(b\j) +(0,-\ydist) coordinate (c\j) 
+};
+
+
+\path foreach \j in {2,...,\p} {
+(c\j) node (C\j) {\(\sigma^2_{\j}\)}
+};
+
+% EDGES & PLATE
+\draw (X2) -- (X3) ;
+\draw (X2) -- (X1) ;
+\draw (X1) to[out=30, in=150] (X3) ;
+\plate {v-plate} {(Y) (B\p)} {\(g\)};
+%
+\foreach \j in {2,...,\p} {
+\draw (X\j) -- (Y) ;
+\draw (B\j) -- (Y) ;
+}
+\foreach \j in {2,...,\p} {
+%\draw (C\j) -- (B\j) ;
+}
+
+\end{tikzpicture}
+\end{document}
