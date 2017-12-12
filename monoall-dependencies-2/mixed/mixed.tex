@@ -15,13 +15,23 @@
 \input{../shared-code-1}
 
 \path (-2\xdist,\ydist) foreach \j in {1,...,\p} {
-(b\j) +(0,-\ydist) coordinate (c\j) 
+(b\j) +(0,-0.75\ydist) coordinate (m\j) 
+(b\j) +(0,-1.0\ydist) coordinate (c\j) 
+%(b\j) +(-0.5\xdist,-1.5\ydist) coordinate (n\j) 
+%(b\j) +(0\xdist,-1.75\ydist) coordinate (d\j) 
 };
-
 
 \path foreach \j in {2,...,\p} {
 (c\j) node (C\j) {\(\sigma^2_{\j}\)}
+(m\j) node (M\j) {\(\mu_{\j}\)}
+%(d\j) node (D\j) {\(\mu_{\j}\)}
 };
+
+\path (m1) node (M1) {\(\mu_1 \equiv \beta_1\)};
+\path (c1) node (C1) {\(\sigma^2_1 = 0\)};
+
+%\path (d1) node (D1) {\(\sigma^2_{1\mid 2}\)};
+%\path (d3) node (D3) {\(\sigma^2_{3\mid 2}\)};
 
 % EDGES & PLATE
 \draw (X2) -- (X3) ;
