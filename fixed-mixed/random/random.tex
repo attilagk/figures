@@ -1,0 +1,16 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{bayesnet, arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}
+
+\input{../shared.tex}
+
+% specific to each model
+\node (par) at (p) {\(\beta\)};
+\node (par) at (pg) {\(b\)};
+\plate {v-plate} {(Y) (pg) } {\(g\)};
+
+\end{tikzpicture}
+\end{document}
+

@@ -1,0 +1,8 @@
+% general
+\newlength{\ydist}
+\setlength{\ydist}{1.5cm}
+\node[obs] (Y) at (0,0) {\(Y\)};
+\node[obs] (X) at (0,\ydist) {\(X\)};
+\coordinate (p) at (0,-\ydist);
+\coordinate (pg) at (0,-0.5\ydist);
+\path[->, draw] (X) -- (Y);
