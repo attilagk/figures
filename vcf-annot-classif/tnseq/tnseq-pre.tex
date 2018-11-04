@@ -1,0 +1,13 @@
+% coordinates
+\coordinate (SW) at (0,0);
+\coordinate (NW) at (0,5);
+\coordinate (SE) at (5,0);
+\coordinate (NE) at (5,5);
+\path (SW) -- node[rotate=90, anchor=south] {TLOD} (NW);
+\path (SW) -- node[anchor=north] {NLOD} (SE);
+\path (NW) -- node[anchor=south] {\textbf{TNseq.Mutect2}} (NE);
+
+\node (D1) at (0,0.5) {};
+\node (D2) at (2.5,3.5) {};
+\node (D3) at (5.0,4.5) {};
+
