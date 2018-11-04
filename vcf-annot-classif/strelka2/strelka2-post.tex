@@ -1,0 +1,23 @@
+% plot axes
+\draw (SW) rectangle (NE);
+
+% true positives
+\begin{scope}[every node/.style={draw, rectangle, fill=red}]
+\node at (0.4,3.8) {};
+\node at (0.7,3.7) {};
+\node at (3.3,4.8) {};
+\node at (2.5,4.5) {};
+\node at (4.0,3.3) {};
+\node at (4.6,2.7) {};
+\end{scope}
+
+% false positives
+\begin{scope}[every node/.style={draw, circle, fill=blue}]
+\node at (0.2,2.2) {};
+\node at (2.0,3.7) {};
+\node at (3.5,0.4) {};
+\node at (2.6,3.4) {};
+\node at (3.6,2.2) {};
+\node at (1.6,1.8) {};
+\end{scope}
+
