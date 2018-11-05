@@ -1,0 +1,26 @@
+\documentclass[tikz]{standalone}
+\renewcommand*{\familydefault}{\sfdefault}
+\usepackage{standalone}
+\usepackage{amssymb}
+\usetikzlibrary{decorations}
+%\usetikzlibrary{arrows.meta, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\usetikzlibrary{bayesnet}
+
+\begin{document}
+\begin{tikzpicture}%[font=\footnotesize, xscale=1.5]
+% plot
+\input{tnseq-pre}
+
+% filter
+\fill[fill=red!20!white] (SW) rectangle (NE);
+\fill[fill=blue!20!white] plot[smooth] coordinates {(D1) (D2) (D3)} -- (SE) --
+(SW) -- (D1) -- (D3) -- (D1);
+\draw[line width=1pt] plot[smooth] coordinates {(D1) (D2) (D3)};
+
+% points
+\input{tnseq-post}
+
+% unlabeled points
+\input{tnseq-post-unlabeled}
+\end{tikzpicture}
+\end{document}
