@@ -11,15 +11,16 @@
 % plot
 \input{strelka2-pre}
 
-% filter
-\fill[fill=red!20!white] (SW) rectangle (NE);
-\fill[fill=blue!20!white] plot[smooth] coordinates {(D1) (D2) (D3)} -- (SE) --
-(SW) -- (D1) -- (D3) -- (D1);
-\draw[line width=1pt] plot[smooth] coordinates {(D1) (D2) (D3)};
+\coordinate (F) at (2.3,2.5);
+\fill[fill=blue!20!white] (SE) rectangle (NW);
+\fill[fill=red!20!white] (F) rectangle (NE);
+\draw[line width=1pt] (F) -- (F-|NE);
+\draw[line width=1pt] (F) -- (F|-NE);
 
-% labeled points
+% points
 \input{strelka2-post}
 
+% unlabeled points
+\input{strelka2-post-unlabeled}
 \end{tikzpicture}
 \end{document}
-
