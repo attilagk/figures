@@ -1,0 +1,13 @@
+% coordinates
+\coordinate (SW) at (0,0);
+\coordinate (NW) at (0,5);
+\coordinate (SE) at (5,0);
+\coordinate (NE) at (5,5);
+\path (SW) -- node[rotate=90, anchor=south] {SomaticEVS} (NW);
+\path (SW) -- node[anchor=north] {DP---read depth} (SE);
+\path (NW) -- node[anchor=south] {\textbf{strelka2Somatic}} (NE);
+
+\node (D1) at (0,2.6) {};
+\node (D2) at (2.3,4.1) {};
+\node (D3) at (5.0,1.5) {};
+

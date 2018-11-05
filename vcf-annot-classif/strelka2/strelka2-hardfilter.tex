@@ -1,0 +1,25 @@
+\documentclass[tikz]{standalone}
+\renewcommand*{\familydefault}{\sfdefault}
+\usepackage{standalone}
+\usepackage{amssymb}
+\usetikzlibrary{decorations}
+%\usetikzlibrary{arrows.meta, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\usetikzlibrary{bayesnet}
+
+\begin{document}
+\begin{tikzpicture}%[font=\footnotesize, xscale=1.5]
+% plot
+\input{strelka2-pre}
+
+\coordinate (F) at (2.3,2.5);
+\fill[fill=blue!20!white] (SE) rectangle (NW);
+\fill[fill=red!20!white] (F) rectangle (NE);
+\draw[line width=1pt] (F) -- (F-|NE);
+\draw[line width=1pt] (F) -- (F|-NE);
+
+% points
+\input{strelka2-post}
+\end{tikzpicture}
+\end{document}
+
+

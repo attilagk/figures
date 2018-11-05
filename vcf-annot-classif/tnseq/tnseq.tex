@@ -1,0 +1,17 @@
+\documentclass[tikz]{standalone}
+\renewcommand*{\familydefault}{\sfdefault}
+\usepackage{standalone}
+\usepackage{amssymb}
+\usetikzlibrary{decorations}
+%\usetikzlibrary{arrows.meta, decorations.pathmorphing, decorations.pathreplacing, shapes.geometric}
+\usetikzlibrary{bayesnet}
+
+\begin{document}
+\begin{tikzpicture}%[font=\footnotesize, xscale=1.5]
+% plot
+\input{tnseq-pre}
+
+% points
+\input{tnseq-post}
+\end{tikzpicture}
+\end{document}

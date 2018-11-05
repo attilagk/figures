@@ -1,0 +1,31 @@
+\documentclass[tikz]{standalone}
+%\usetikzlibrary{calc}
+\begin{document}
+\begin{tikzpicture}[every node/.style={circle, inner sep=0pt}]
+\input{pr-shared}
+
+\draw[color=red] plot[smooth] coordinates { (NW) (A1) (A2) (A3) (SE) };
+\draw[color=blue] plot[smooth] coordinates { (NW) (B1) (B2) (B3) (SE) };
+\draw[color=olive] plot[smooth] coordinates { (NW) (C1) (C2) (C3) (SE) };
+
+\footnotesize
+\begin{scope}[every node/.style={circle, minimum size=1.5em, inner sep=0pt, red, fill=red!20!white}]
+\node at (A1) {\(A_1\)};
+\node at (A2) {\(A_2\)};
+\node at (A3) {\(A_3\)};
+\end{scope}
+
+\begin{scope}[every node/.style={circle, minimum size=1.5em, inner sep=0pt, blue, fill=blue!20!white}]
+\node at (B1) {\(B_1\)};
+\node at (B2) {\(B_2\)};
+\node at (B3) {\(B_3\)};
+\end{scope}
+
+\begin{scope}[every node/.style={circle, minimum size=1.5em, inner sep=0pt, olive, fill=olive!20!white}]
+\node at (C1) {\(C_1\)};
+\node at (C2) {\(C_2\)};
+\node at (C3) {\(C_3\)};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
