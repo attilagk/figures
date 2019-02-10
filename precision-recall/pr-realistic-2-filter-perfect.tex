@@ -1,0 +1,21 @@
+\documentclass[tikz]{standalone}
+%\usetikzlibrary{calc}
+\begin{document}
+\begin{tikzpicture}[every node/.style={circle, inner sep=0pt}]
+\input{pr-shared}
+
+\footnotesize
+\begin{scope}[every node/.style={circle, inner sep=0pt, minimum size=1.5em, cyan, fill=cyan!20!white}]
+\path (B2) +(0,0.7) node (B2f) {\(A\)};
+\path[->] (B2) edge (B2f);
+\end{scope}
+
+\begin{scope}[every node/.style={circle, inner sep=0pt, minimum size=1.5em, brown, fill=brown!20!white}]
+\draw[->] (C3) +(0,1.3) node (C3f) {\(B\)};
+\path[->] (C3) edge (C3f);
+\end{scope}
+
+\input{pr-realistic-shared-2}
+
+\end{tikzpicture}
+\end{document}
