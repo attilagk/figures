@@ -1,0 +1,23 @@
+\documentclass[tikz]{standalone}
+%\usetikzlibrary{calc}
+\begin{document}
+\begin{tikzpicture}[every node/.style={circle, inner sep=0pt}]
+\input{pr-shared}
+
+\coordinate (Uf) at (4.3, 4.0);
+%\draw[dotted] (Uf) -- (Uf -| NW);
+
+\begin{scope}[every node/.style={circle, inner sep=0pt, minimum size=1.5em, cyan, fill=cyan!20!white}]
+\node (Bf) at (3.5, 4.0) {\(B\)};
+\end{scope}
+
+\begin{scope}[every node/.style={circle, inner sep=0pt, minimum size=1.5em, brown, fill=brown!20!white}]
+\node (Cf) at (2.2, 4.0) {\(C\)};
+\end{scope}
+
+\begin{scope}[every node/.style={circle, inner sep=0pt, minimum size=1.5em, black, fill=black!20!white}]
+\node at (Uf) {\(U\)};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
