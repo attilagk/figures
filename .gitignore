@@ -7,4 +7,11 @@
 *synctex.gz
 *project.vim
 *.out
+*.png
+*.pdf
+*.html
 *.swp
+*.ppt
+*.pptx
+*.jnlp
+*.syn_cache
