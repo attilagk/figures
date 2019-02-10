@@ -1,0 +1,14 @@
+\documentclass[tikz]{standalone}
+%\usetikzlibrary{calc}
+\begin{document}
+\begin{tikzpicture}[every node/.style={circle, inner sep=0pt}]
+\input{pr-shared}
+
+\input{pr-pass-shared}
+
+\coordinate (V1) at (3.3, 4.75);
+\coordinate (V2) at (4.3, 4.0);
+\coordinate (V3) at (4.8, 3.0);
+\draw[color=black,very thick] plot[smooth] coordinates { (NW) (V1) (V2) (V3) };
+\end{tikzpicture}
+\end{document}
