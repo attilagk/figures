@@ -11,16 +11,16 @@
 % plot
 \input{strelka2-pre}
 
-<<<<<<< HEAD
+\coordinate (F) at (2.3,2.5);
+\fill[fill=blue!20!white] (SE) rectangle (NW);
+\fill[fill=red!20!white] (F) rectangle (NE);
+\draw[line width=1pt] (F) -- (F-|NE);
+\draw[line width=1pt] (F) -- (F|-NE);
+
 % points
-\input{strelka2-post}
-=======
-% labeled points
 \input{strelka2-post}
 
 % unlabeled points
-%\input{strelka2-post-unlabeled}
-
->>>>>>> f685603b17235417afb36bce22690eed02c1fc2b
+\input{strelka2-post-unlabeled}
 \end{tikzpicture}
 \end{document}
