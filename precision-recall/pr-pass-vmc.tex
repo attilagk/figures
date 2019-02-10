@@ -3,8 +3,14 @@
 \begin{document}
 \begin{tikzpicture}[every node/.style={circle, inner sep=0pt}]
 \input{pr-shared}
+\input{pr-realistic-shared}
 
-\input{pr-pass-shared}
+\begin{scope}[pin distance=5pt]
+\node[pin=below:0] at (SW) {};
+\node[pin=below:1] at (SE) {};
+\node[pin=left:0] at (SW) {};
+\node[pin=left:1] at (NW) {};
+\end{scope}
 
 \coordinate (V1) at (3.3, 4.75);
 \coordinate (V2) at (4.3, 4.0);

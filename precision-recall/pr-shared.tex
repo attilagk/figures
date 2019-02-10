@@ -4,7 +4,7 @@
 \coordinate (NE) at (5,5);
 
 \draw (SW) -- (NW) -- (NE) -- (SE) -- (SW);
-\path (SW) -- node[rotate=90, anchor=south] {precision} (NW);
+\path (SW) -- node[rotate=90, anchor=south] {prec} (NW);
 \path (SW) -- node[anchor=north] {recall} (SE);
 
 \coordinate (A1) at (2.6, 4.5);
@@ -18,7 +18,3 @@
 \coordinate (A3) at (4.05, 2.5);
 \coordinate (B3) at (4.70, 2.5);
 \coordinate (C3) at (3.6, 2.5);
-
-\draw[dotted] (A1) -- (A1 -| NW);
-\draw[dotted] (B2) -- (B2 -| NW);
-\draw[dotted] (C3) -- (C3 -| NW);
