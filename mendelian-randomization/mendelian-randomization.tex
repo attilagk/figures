@@ -1,0 +1,12 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{bayesnet, arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}
+\input{shared}
+\node[obs, above=of x] (z) {$Z$};
+
+\edge {u} {x};
+\edge {z} {x};
+\end{tikzpicture}
+\end{document}
