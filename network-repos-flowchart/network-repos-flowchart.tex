@@ -37,24 +37,24 @@
 \filldraw[fill=black!30] (b|-e) rectangle (c|-d);
 \end{pgfonlayer}
 
+% AD seed genes
 \node[process, below of=a] (union) {Gene set combination};
 \draw[arrow] (a|-e) -- (union);
-
 \node[io, below of=union] (ADseed) {AD seed genes};
 \draw[arrow] (union) -- (ADseed);
 
+% AD candidate gene prioritization
 \node[io, below of=ADseed, xshift=-4cm] (various) {Various knowledge};
 \node[io, below of=ADseed, xshift=4cm] (candidate) {AD candidate genes};
 \node[process, below of=ADseed, yshift=-2cm] (prioritize) {AD candidate gene prioritization};
 \draw[arrow] (candidate) -- (prioritize);
 \draw[arrow] (various) -- (prioritize);
 \draw[arrow] (ADseed) -- (prioritize);
-
 \node[io, below of=prioritize] (ADgenes) {AD genes};
 \draw[arrow] (prioritize) -- (ADgenes);
 
-\node[process, below of=ADgenes, yshift=-2cm] (proximity) {Target proximity to
-	AD genes};
+% Proximity
+\node[process, below of=ADgenes, yshift=-2cm] (proximity) {Target proximity to AD genes};
 \draw[arrow] (ADgenes) -- (proximity);
 \node[io, below of=ADgenes, xshift=-4cm] (PPI) {PPI network};
 \draw[arrow] (PPI) -- (proximity);
