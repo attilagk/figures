@@ -15,3 +15,5 @@
 *.pptx
 *.jnlp
 *.syn_cache
+*/.latexrun.db
+*/.latexrun.db.lock

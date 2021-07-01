@@ -7,6 +7,6 @@
 \node[obs, above=of x] (z) {$Z$};
 
 \edge {u} {x};
-\edge {z} {x};
+\path[->] (z) edge node[] {$\beta_{ZX}$} (x);
 \end{tikzpicture}
 \end{document}

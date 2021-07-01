@@ -1,5 +1,6 @@
 \node[obs] (y) {$Y$};
 \node[obs, above=of y, xshift=-1cm] (x) {$X$};
-\node[obs, above=of y, xshift=+1cm] (u) {$U$};
+\node[latent, above=of y, xshift=+1cm] (u) {$U$};
 
-\edge {x,u} {y};
+\edge {u} {y};
+\path[->] (x) edge node[] {$\beta_{XY}$} (y);
