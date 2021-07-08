@@ -13,7 +13,7 @@
 \begin{document}
 \begin{tikzpicture}[node distance=2cm]
 
-% Established AD gene sets
+% High confidence AD gene sets
 \begin{scope}[node distance=1.5cm]
 \node[io] (knowledge) at (0,0) {Curated knowledge};
 \node[io, below of=knowledge] (incipient) at (0,0) {Incipient AD signature};
@@ -22,14 +22,14 @@
 \node[io, right of=a, xshift=1cm] (TWASn) {TWAS $n$};
 \end{scope}[node distance=1.5cm]
 
-% gray rectangle for Established AD gene sets
+% gray rectangle for High confidence AD gene sets
 % create coordinates to define rectangle
 \begin{scope}[node distance=2.2cm]
 \coordinate[left of=TWAS1] (b);
 \coordinate[right of=TWASn] (c);
 \end{scope}
 \begin{scope}[node distance=1.00cm]
-\node[above of=knowledge, fill=black!30] (d) {Established AD gene sets};
+\node[above of=knowledge, fill=black!30] (d) {High confidence AD gene sets};
 \coordinate[below of=TWAS1] (e);
 \end{scope}
 % draw box itself
