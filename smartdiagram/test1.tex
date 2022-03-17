@@ -1,6 +1,22 @@
-\documentclass[tikz]{standalone}
+\documentclass[]{article}
+\usepackage{smartdiagram}
+\usesmartdiagramlibrary{additions}
 \begin{document}
-\begin{center}
-\smartdiagram[circular diagram]{Set up,Run,Analyse,Modify~/ Add}
-\end{center}
+\smartdiagramset{
+	uniform color list=gray!60!black for 3 items,
+	back arrow disabled=true,
+	additions={
+		additional item offset=0.85cm,
+		additional item border color=red,
+		additional connections disabled=false,
+		additional arrow color=red,
+		additional arrow tip=stealth,
+		additional arrow line width=1pt,
+	}
+}
+\smartdiagramadd[flow diagram:horizontal]{%
+	PGF, Ti\textit{k}Z,Smartdiagram%
+}{%
+	below of module1/Low Level, below of module3/High level%
+}
 \end{document}
