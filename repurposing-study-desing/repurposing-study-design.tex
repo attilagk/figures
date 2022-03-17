@@ -1,0 +1,64 @@
+\documentclass[]{standalone}
+\usepackage{smartdiagram}
+\usesmartdiagramlibrary{additions}
+
+\begin{document}
+%\smartdiagramadd[flow diagram:horizontal]{%
+%PGF,Ti\textit{k}Z,Smartdiagram%
+%}{%
+%below of module1/Low Level, below of module3/High level%
+%}
+\smartdiagramset { set color list = {
+		blue ! 50 ! cyan ,
+		green ! 60 ! lime ,
+	orange ! 50 ! red }
+} % A new list of colors
+% An horizontal diagram :
+% - first remove the arrow from
+% the last block towards the first one
+% - customize the aspect of the
+% additional blocks
+\smartdiagramset {
+	back arrow disabled = true ,
+	additions = {
+		additional item bottom color = %
+		orange ! 60 ! red ! 30 ,
+		additional item border color = gray ,
+		additional item shadow = drop shadow ,
+		additional item offset =0.65 cm ,
+		additional connections disabled = false ,
+		additional arrow line width =2 pt ,
+		additional arrow tip = to ,
+		additional arrow color = %
+		orange ! 60 ! red ! 50 ,
+		additional arrow style = { ] - latex } ,
+	}
+}
+\smartdiagramadd [ %
+flow diagram : horizontal ] {
+	IaaS , PaaS , SaaS
+} {
+above of module 1/
+{ Virtual machines , servers , storage ,
+load balancers , network } ,
+above of module 2/
+{ Execution runtime , database ,
+web server , development tools } ,
+above of module 3/
+{ CRM , Email , virtual desktop ,
+communication , games }
+}
+%\smartdiagram[sequence diagram]{PGF,Ti\textit{k}Z,Smartdiagram}
+%\smartdiagramset{
+%set color list={orange!60, green!50!lime!60,magenta!60,blue!50!cyan},
+%uniform connection color=true,
+%planet text width=2.5cm,
+%planet font=\normalfont,
+%distance planet-satellite=4.5cm,
+%satellite text width=2.5cm,
+%/tikz/connection planet satellite/.append style={<-}
+%} 
+%\smartdiagramadd[constellation diagram]{Text Comprehension,
+%Navigation, Dialogue, Memory Offloading}{
+%}
+\end{document}
