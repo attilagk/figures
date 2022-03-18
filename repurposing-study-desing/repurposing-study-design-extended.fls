@@ -2,8 +2,8 @@ PWD /Users/jonesa7/figures/by-me/repurposing-study-desing
 INPUT /usr/local/texlive/2021/texmf.cnf
 INPUT /usr/local/texlive/2021/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT ./repurposing-study-design.tex
-OUTPUT ./repurposing-study-design.log
+INPUT ./repurposing-study-design-extended.tex
+OUTPUT ./repurposing-study-design-extended.log
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/standalone/standalone.cls
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/standalone/standalone.cls
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/standalone/standalone.cls
@@ -439,7 +439,7 @@ INPUT /usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libr
 INPUT /usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfadings.code.tex
 INPUT /usr/local/texlive/2021/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code.tex
 INPUT /usr/local/texlive/2021/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code.tex
-OUTPUT ./repurposing-study-design.pdf
+OUTPUT ./repurposing-study-design-extended.pdf
 INPUT /usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshadows.code.tex
 INPUT /usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshadows.code.tex
 INPUT /usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.arrows.code.tex
@@ -460,10 +460,10 @@ INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/smartdiagram/smartdiagramlibr
 INPUT /usr/local/texlive/2021/texmf-dist/tex/latex/smartdiagram/smartdiagramlibraryadditions.code.tex
 INPUT /usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
 INPUT /usr/local/texlive/2021/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
-INPUT ./repurposing-study-design.aux
-INPUT ./repurposing-study-design.aux
-INPUT ./repurposing-study-design.aux
-OUTPUT ./repurposing-study-design.aux
+INPUT ./repurposing-study-design-extended.aux
+INPUT ./repurposing-study-design-extended.aux
+INPUT ./repurposing-study-design-extended.aux
+OUTPUT ./repurposing-study-design-extended.aux
 INPUT /usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -497,6 +497,6 @@ INPUT shared.tex
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT /usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map
-INPUT ./repurposing-study-design.aux
+INPUT ./repurposing-study-design-extended.aux
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb
