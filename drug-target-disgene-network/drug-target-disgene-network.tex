@@ -1,24 +1,29 @@
 \documentclass[tikz]{standalone}
-\usetikzlibrary{arrows.meta}
-\usetikzlibrary{bayesnet}
+\usepackage{pgfmath}
+%\usetikzlibrary{calc}
 
 \begin{document}
 \begin{tikzpicture}
-	% targets
-\path
-	(0,0) node (a1) {$a_1$}
-	(1,0) node (a2) {$a_2$}
-	(2,0) node (a3) {$a_3$}
-	(3,0) node (a4) {$a_4$}
-	;
 
-\path [shift=(-120:1cm)]
-	(0,0) node (b5) {$b_5$}
-	(1,0) node (b6) {$b_6$}
-	(2,0) node (b7) {$b_7$}
-	(3,0) node (b8) {$b_8$}
-	(4,0) node (b9) {$b_9$}
-	;
+\foreach \i in {0,1,2,3,4} {
+	%\shade[ball color=orange,yshift=1cm]	(\i,0) circle (0.15);
+	\node[yshift=1cm,circle,fill=blue] at (\i * 0.75,0) {};
+}
+
+\foreach \i in {0,1,2,3} {
+	%\shade[ball color=orange,yshift=1cm]	(\i,0) circle (0.15);
+	\node[yshift=0cm,xshift=0,circle,fill=orange] at (\i,0) {};
+}
+
+\foreach \i in {0,1,2,3,4} {
+	\node[yshift=-0.87cm,xshift=-0.5cm,circle,fill=orange] at (\i,0) {};
+}
+
+\foreach \i in {0,1,2,3} {
+	\node[yshift=-1.73cm,xshift=0,circle,fill=orange] at (\i,0) {};
+}
+
 \end{tikzpicture}
+
 \end{document}
 
