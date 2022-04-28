@@ -1,29 +1,148 @@
 \documentclass[tikz]{standalone}
 \usepackage{pgfmath}
-%\usetikzlibrary{calc}
+\usepackage{tikz-3dplot}
+\usepgflibrary{shapes.callouts}
+\usepgflibrary{shapes.misc}
 
 \begin{document}
+
+\tdplotsetmaincoords{70}{00}
+
 \begin{tikzpicture}
 
-\foreach \i in {0,1,2,3,4} {
+\foreach \i/\c in {0/blue,1/green!70!black,2/magenta,3/cyan,4/orange} {
 	%\shade[ball color=orange,yshift=1cm]	(\i,0) circle (0.15);
-	\node[yshift=1cm,circle,fill=blue] at (\i * 0.75,0) {};
+	\node[yshift=1cm,rounded rectangle,text width=0.3cm,rotate=60,fill=\c] (a\i) at (\i * 0.75,0) {};
 }
 
-\foreach \i in {0,1,2,3} {
-	%\shade[ball color=orange,yshift=1cm]	(\i,0) circle (0.15);
-	\node[yshift=0cm,xshift=0,circle,fill=orange] at (\i,0) {};
+\begin{scope}[every node/.style={circle,line width=2pt,draw=gray}]
+
+\foreach \i/\c in {0/gray,1/gray,2/red,3/gray} {
+	\node[yshift=0cm,xshift=0,fill=\c] (b\i) at (\i,0) {};
 }
 
-\foreach \i in {0,1,2,3,4} {
-	\node[yshift=-0.87cm,xshift=-0.5cm,circle,fill=orange] at (\i,0) {};
+\foreach \i/\c in {0/gray,1/gray,2/red,3/gray,4/gray} {
+	\node[yshift=-0.87cm,xshift=-0.5cm,fill=\c] (c\i) at (\i,0) {};
 }
 
-\foreach \i in {0,1,2,3} {
-	\node[yshift=-1.73cm,xshift=0,circle,fill=orange] at (\i,0) {};
+\foreach \i/\c in {0/gray,1/red,2/red,3/gray} {
+	\node[yshift=-1.73cm,xshift=0,fill=\c] (d\i) at (\i,0) {};
 }
+
+\end{scope}
+
+% annotations
+\node[anchor=east] (drugs) at (-1,1) {drugs};
+\node[anchor=east] (targets) at (-1,0) {targets};
+\node[anchor=east] (genes) at (-1,-0.87) {genes};
+
+% arrows for annotations
+\draw[->] (drugs) -- ($ (drugs) !0.75! (a0) $);
+\draw[->] (targets) -- ($ (targets) !0.75! (b0) $);
+\foreach \x  in {b,c,d} {
+	\draw[->] (genes) -- ($ (genes) !0.75! (\x0) $);
+}
+
+% gene-gene edges
+\path[line width=2pt,gray]
+	% withn b's
+	(b0) edge (b1)
+	(b2) edge (b3)
+	% withn c's
+	(c0) edge (c1)
+	(c2) edge (c3)
+	(c3) edge (c4)
+	% withn d's
+	(d0) edge (d1)
+	(d1) edge (d2)
+	(d2) edge (d3)
+	% between b's and c's
+	(b0) edge (c0)
+	(b0) edge (c1)
+	(b1) edge (c1)
+	(b2) edge (c2)
+	(b3) edge (c2)
+	(b3) edge (c3)
+	(b3) edge (c4)
+	% between c's and d's
+	(c0) edge (d0)
+	(c2) edge (d0)
+	(c2) edge (d2)
+	(c2) edge (d3)
+	(c3) edge (d3)
+	% between b's and d's
+	(b3) edge (d3)
+	;
+
+% drug-gene edges
+% a0: blue pill
+\path[line width=2pt,blue]
+	(a0) edge (b0)
+	(a0) edge (b1)
+	;
+
+% a1: green pill
+\path[line width=2pt,green!70!black]
+	(a1) edge (b0)
+	(a1) edge (b1)
+	;
+
+% a2: magenta pill
+\path[line width=2pt,magenta]
+	(a2) edge (b1)
+	;
+
+% a3: cyan pill
+\path[line width=2pt,cyan]
+	(a3) edge (b1)
+	(a3) edge (b2)
+	%(a3) edge (b3)
+	;
+
+% a4: orange pill
+\path[line width=2pt,orange]
+	(a4) edge (b3)
+	;
 
 \end{tikzpicture}
 
 \end{document}
 
+% code from
+% https://tex.stackexchange.com/questions/484735/draw-pill-tablet-capsule-with-tikz
+\tdplotsetmaincoords{70}{00}
+\begin{tikzpicture}[rotate=-45,tdplot_main_coords,pill radius/.initial=1, pill length/.initial=3]
+\draw[top color=red!10,bottom color=red!80!black,middle color=red,shading angle=90-45] 
+plot[variable=\x,domain=\tdplotmainphi:\tdplotmainphi-180] 
+({\pgfkeysvalueof{/tikz/pill radius}*cos(\x)},{\pgfkeysvalueof{/tikz/pill radius}*sin(\x)},0)
+-- plot[variable=\x,domain=\tdplotmainphi-180:\tdplotmainphi] 
+({\pgfkeysvalueof{/tikz/pill radius}*cos(\x)},{\pgfkeysvalueof{/tikz/pill radius}*sin(\x)},
+{-(\pgfkeysvalueof{/tikz/pill length}-\pgfkeysvalueof{/tikz/pill radius})+\pgfkeysvalueof{/tikz/pill radius}*sin(\x)}) -- cycle;
+\draw[top color=blue!10,bottom color=blue!80!black,middle color=blue, shading angle=90-45] 
+plot[variable=\x,domain=\tdplotmainphi:\tdplotmainphi-180] 
+({\pgfkeysvalueof{/tikz/pill radius}*cos(\x)},{\pgfkeysvalueof{/tikz/pill radius}*sin(\x)},0)
+--
+plot[variable=\x,domain=\tdplotmainphi-180:\tdplotmainphi] 
+({\pgfkeysvalueof{/tikz/pill radius}*cos(\x)},{\pgfkeysvalueof{/tikz/pill radius}*sin(-\x)}, {(\pgfkeysvalueof{/tikz/pill length}-\pgfkeysvalueof{/tikz/pill radius})-\pgfkeysvalueof{/tikz/pill radius}*sin(\x)}) -- cycle;
+\end{tikzpicture}\quad
+
+\begin{tikzpicture}[gap width/.initial=1mm,diameter/.initial=1cm]
+\fill[blue!20] (45:\pgfkeysvalueof{/tikz/diameter})
+arc(45:225:\pgfkeysvalueof{/tikz/diameter}) -- 
+cycle; 
+\fill[blue!50] (45:\pgfkeysvalueof{/tikz/diameter})
+arc(45:-135:\pgfkeysvalueof{/tikz/diameter}) -- 
+cycle; 
+\fill[blue!30] (0,0)
+circle[radius=\pgfkeysvalueof{/tikz/diameter}-\pgfkeysvalueof{/tikz/gap width}];
+\fill[blue!50] (45:\pgfkeysvalueof{/tikz/diameter}) -- 
+++ ({-sqrt(2)*\pgfkeysvalueof{/tikz/gap width}},0) -- 
+++
+(-135:{2*\pgfkeysvalueof{/tikz/diameter}-2*\pgfkeysvalueof{/tikz/gap width}})
+-- (225:\pgfkeysvalueof{/tikz/diameter}) -- cycle;
+\fill[blue!20] (45:\pgfkeysvalueof{/tikz/diameter}) -- 
+++ (0,{-sqrt(2)*\pgfkeysvalueof{/tikz/gap width}}) -- 
+++
+(-135:{2*\pgfkeysvalueof{/tikz/diameter}-2*\pgfkeysvalueof{/tikz/gap width}})
+-- (225:\pgfkeysvalueof{/tikz/diameter}) -- cycle; 
+\end{tikzpicture}
