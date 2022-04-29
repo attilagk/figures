@@ -10,9 +10,10 @@
 
 \begin{tikzpicture}
 
-\foreach \i/\c in {0/blue,1/green!70!black,2/magenta,3/cyan,4/orange} {
+\foreach \i/\l/\c in {0/1/blue,1/2/green!70!black,2/3/magenta,3/4/cyan,4/5/orange} {
 	%\shade[ball color=orange,yshift=1cm]	(\i,0) circle (0.15);
-	\node[yshift=1cm,rounded rectangle,text width=0.3cm,rotate=60,fill=\c] (a\i) at (\i * 0.75,0) {};
+	\node[yshift=1cm,rounded rectangle,text
+		width=0.3cm,rotate=60,fill=\c,label=30:\l] (a\i) at (\i * 0.75,0) {};
 }
 
 \begin{scope}[every node/.style={circle,line width=2pt,draw=gray}]
@@ -35,12 +36,16 @@
 \node[anchor=east] (drugs) at (-1,1) {drugs};
 \node[anchor=east] (targets) at (-1,0) {targets};
 \node[anchor=east] (genes) at (-1,-0.87) {genes};
+\node[anchor=north,red] (AD genes) at (1.5,-2.25) {AD genes};
 
 % arrows for annotations
 \draw[->] (drugs) -- ($ (drugs) !0.75! (a0) $);
 \draw[->] (targets) -- ($ (targets) !0.75! (b0) $);
 \foreach \x  in {b,c,d} {
 	\draw[->] (genes) -- ($ (genes) !0.75! (\x0) $);
+}
+\foreach \x  in {d1,c2,d2} {
+	\draw[->,red] (AD genes) -- ($ (AD genes) !0.75! (\x) $);
 }
 
 % gene-gene edges
